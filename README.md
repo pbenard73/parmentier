@@ -1,6 +1,9 @@
 # NEXUS BRIDGES — Hashi / Bridges (sci-fi)
 
 A **Hashiwokakero** (a.k.a. Bridges / `sgt-bridges`) puzzle game built with
+
+[Play online](https://pbenard73.github.io/parmentier/)
+
 **React + Phaser 3 + TypeScript**, with a neon sci-fi theme.
 
 Connect the glowing nodes with conduits (bridges) so that:
