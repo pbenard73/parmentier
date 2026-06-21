@@ -80,6 +80,22 @@ export function ConfigPanel({
         />
       </label>
 
+      <button
+        className={`kid-toggle ${config.noLoops !== false ? 'on' : ''}`}
+        onClick={() => onChange({ noLoops: config.noLoops === false })}
+      >
+        <span className="kid-icon">⛓️</span>
+        <span className="kid-label">
+          BOUCLES INTERDITES
+          <em>
+            {config.noLoops !== false
+              ? 'ACTIVÉ — réseau sans boucle'
+              : 'boucles autorisées'}
+          </em>
+        </span>
+        <span className={`switch ${config.noLoops !== false ? 'on' : ''}`} />
+      </button>
+
       <div className="field">
         <span>THREAT LEVEL</span>
         <div className="seg">

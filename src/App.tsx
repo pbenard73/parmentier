@@ -10,6 +10,7 @@ const DEFAULT_CONFIG: GameConfig = {
   rows: 9,
   maxBridges: 2,
   difficulty: 'normal',
+  noLoops: true,
 };
 
 const EASY_CONFIG: GameConfig = {
@@ -17,6 +18,7 @@ const EASY_CONFIG: GameConfig = {
   rows: 7,
   maxBridges: 2,
   difficulty: 'easy',
+  noLoops: true,
 };
 
 interface Progress {

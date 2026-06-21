@@ -8,6 +8,12 @@ export interface GameConfig {
   /** maximum number of bridges allowed between two islands (1..11) */
   maxBridges: number;
   difficulty: Difficulty;
+  /**
+   * Forbid loops (cycles) in the generated solution network, like the
+   * "no loops" option in Ubuntu's sgt-bridges. When true (the default) the
+   * solution is a tree, so no island chain ever closes back on itself.
+   */
+  noLoops?: boolean;
   /** optional fixed seed for reproducible puzzles */
   seed?: number;
 }

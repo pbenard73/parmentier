@@ -44,6 +44,14 @@ for (const difficulty of diffs) {
         for (const isl of puzzle.islands) {
           if (isl.value < 1) problems.push(`island ${isl.id} value < 1`);
         }
+        // noLoops is on by default: a connected loop-free network is a tree,
+        // so it must have exactly (islands - 1) active solution edges.
+        const activeEdges = puzzle.edges.filter((e) => e.solution > 0).length;
+        if (activeEdges !== puzzle.islands.length - 1) {
+          problems.push(
+            `loop present: ${activeEdges} edges for ${puzzle.islands.length} islands`,
+          );
+        }
 
         if (problems.length) {
           failures++;

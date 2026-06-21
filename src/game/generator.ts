@@ -65,6 +65,8 @@ export function generatePuzzle(config: GameConfig): Puzzle {
 function build(config: GameConfig, seed: number): Puzzle | null {
   const { cols, rows } = config;
   const maxBridges = Math.max(1, Math.min(11, Math.round(config.maxBridges)));
+  // loops are forbidden by default (sgt-bridges "no loops" rule)
+  const noLoops = config.noLoops ?? true;
   const params = DIFFICULTY[config.difficulty];
   const rng = makeRng(seed);
   const randInt = (n: number) => Math.floor(rng() * n);
@@ -160,8 +162,10 @@ function build(config: GameConfig, seed: number): Puzzle | null {
         break; // any non-empty cell (island or bridge) blocks the ray
       }
 
-      // Option A: cross-link to an existing island to create a cycle
+      // Option A: cross-link to an existing island to create a cycle.
+      // Skipped entirely when loops are forbidden, keeping the network a tree.
       if (
+        !noLoops &&
         obstacleIsland >= 0 &&
         obstacleDist >= 2 &&
         !solution.has(pairKey(src.id, obstacleIsland)) &&
